@@ -15,11 +15,14 @@ import org.springframework.web.bind.annotation.*;
 public interface DemoFeignClient {
 
     @GetMapping("/get")
-    ResponseEntity<BaseResponseInfo> callGet(@RequestHeader("CustomHeaderName") String customHeader,
-                                             @RequestParam("name") String name,
-                                             @RequestParam("age") Long age);
+    ResponseEntity<BaseResponseInfo> callErrorDecoder(@RequestHeader("CustomHeaderName") String customHeader,
+                                                      @RequestParam("name") String name,
+                                                      @RequestParam("age") Long age);
 
     @PostMapping("/post")
-    ResponseEntity<BaseResponseInfo> callGet(@RequestHeader("CustomHeaderName") String customHeader,
-                                             @RequestBody BaseRequestInfo baseRequestInfo);
+    ResponseEntity<BaseResponseInfo> callErrorDecoder(@RequestHeader("CustomHeaderName") String customHeader,
+                                                      @RequestBody BaseRequestInfo baseRequestInfo);
+
+    @GetMapping("/error")
+    ResponseEntity<BaseResponseInfo> callErrorDecoder();
 }
